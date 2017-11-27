@@ -48,7 +48,7 @@ render() {
     <div className="forex-info">
       <div className="search">
         <input placeholder="Search for FOREX pair" />
-        <button onClick={this.getName()}>Submit</button>
+        <button>Submit</button>
       </div>
 
       {dataList}
