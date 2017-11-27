@@ -1,6 +1,4 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class CryptoInfo extends Component {
@@ -10,31 +8,31 @@ class CryptoInfo extends Component {
       getRequestData: '',
       isFetchingData: false
     }
-    this.getCryptoInfo = this.getCryptoInfo.bind(this);
+    
   }
 
-  getCryptoInfo(data) {
+  getCryptoInfo() {
     this.setState({
       isFetchingData: true
     })
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
       .then(response => {
-        console.log(response);
-        let foundData = response[0].name;
+        console.log(response, 'res');
+        const foundData = response.data.data.children.map(obj => obj.data);
         this.setState({
           getRequestData: foundData
-        })
+        }) 
       }).catch(error => {
         console.log(`Error at ${error}`);
       })
   };
 
   render() {
-    return ( <
-      div className = "crypto" > {
-        this.state.getRequestData
-      } <
-      /div>
+    
+    return ( 
+      <div className = "crypto">
+        Here is Crypto data: <li key={this.state.getRequestData.id}>{this.state.getRequestData.name}</li>
+      </div>
     );
   }
 }

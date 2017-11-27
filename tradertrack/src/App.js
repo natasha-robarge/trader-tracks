@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import CryptoInfo from './components/CryptoInfo';
+import ForexInfo from './components/ForexInfo';
 import './App.css';
 
 class App extends Component {
@@ -6,6 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <CryptoInfo />
+        <ForexInfo />
       </div>
     );
   }
