@@ -1,28 +1,40 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+nav {
+  padding: 30px;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+nav a{
+  text-decoration: none;
+  padding-right: 20px;
+  color: #000;
 }
-
-.App-title {
-  font-size: 1.5em;
+.forex-stats {
+  text-align: center;
+  border: 2px solid #000;
 }
-
-.App-intro {
-  font-size: large;
+.forex-stats p {
+  display: inline-block;
+  padding-left: 5px;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.forex-stats h3 {
+  display: inline-block;
+}
+.crypto-stats {
+  text-align: center;
+  border: 2px solid #000;
+}
+.crypto-stats p {
+  display: inline-block;
+  padding-left: 5px;
+}
+.crypto-stats h3 {
+  display: inline-block;
+}
+.search {
+  padding-bottom: 20px;
+}
+.search input {
+  width: 200px;
+  border-radius: 10px;
 }

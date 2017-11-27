@@ -42,12 +42,17 @@ class CryptoInfo extends Component {
     }
 
     var dataList = cryptoInfoArr.map((data, idx) => {
-      return <div className={idx}>Name: {data.name} <br /> Price in USD: {data.price_usd} <br /> last updated: {data.last_updated} </div>;
+      let date = Math.round(data.last_updated / (1000 * 60 * 60) % 24)
+      return <div className={idx}><div className="crypto-stats"><h3>{data.name} {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>last updated:</h3><p>{date} hours ago</p><br /><p>Percent change by the hour is {data.percent_change_1h}%</p></div></div>;
     });
 
     return (
       <div className="App">
         <h1>Cryptocurrencies Info:</h1>
+        <div className="search">
+          <input placeholder="Search for crypto name" />
+          <button>Submit</button>
+        </div>
         {dataList}
       </div>
     );

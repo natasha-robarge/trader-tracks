@@ -7,10 +7,11 @@ import {
 } from 'react-router-dom';
 import CryptoInfo from './components/CryptoInfo';
 import ForexInfo from './components/ForexInfo';
+import Welcome from './components/Welcome';
 import axios from 'axios';
 import './App.css';
 
-class App extends Component {
+class App extends Component {git
 
   render() {
 
@@ -30,7 +31,6 @@ class App extends Component {
           </Switch>
         </div>
       </Router>
-        <h1>WELCOME TO TRADER TRACKS</h1>
       </div>
     );
   }
