@@ -31,7 +31,7 @@ render() {
   return (
     <div className="forex">
     Here is forex data:
-      {/* {this.state.getRequestData} */}
+      
     </div>
   );
 }
