@@ -1,57 +1,36 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
 import CryptoInfo from './components/CryptoInfo';
 import ForexInfo from './components/ForexInfo';
 import axios from 'axios';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      getRequestData: '',
-      isFetchingData: false
-    }
-    this.getCryptoInfo = this.getCryptoInfo.bind(this);
-  }
-
-  getCryptoInfo() {
-    this.setState({
-      isFetchingData: true
-    })
-    axios.get('https://api.coinmarketcap.com/v1/ticker/')
-      .then(response => {
-        console.log(response, 'res');
-        let foundData = response.data
-        console.log(foundData, ' found')
-        this.setState({
-          getRequestData: foundData
-          
-        })
-      }).catch(error => {
-        console.log(`Error at ${error}`);
-      })
-  };
-
-  componentWillMount() {
-    this.getCryptoInfo()
-  }
 
   render() {
-    let cryptoInfo = this.state.getRequestData;
-    let cryptoInfoArr = [];
-    for (var i = 0; i < cryptoInfo.length; i++) {
-      cryptoInfoArr.push(cryptoInfo[i]);
-    }
-
-    var dataList = cryptoInfoArr.map((data, idx) => {
-      return <div>Name: {data.name} Price in USD: {data.price_usd} last updated: {data.last_updated} </div>;
-    });
 
     return (
       <div className="App">
-        
-        <CryptoInfo />
-        {/* <ForexInfo />  */}
+      <Router>
+        <div className="container">
+          <nav>
+            <Link to="/">HOME</Link>
+            <Link to="/crypto">CRYPTOCURRENCIES PRICES</Link>
+            <Link to="/forex">FOREX PRICES</Link>
+          </nav>
+          <Switch>
+            <Route exact path="/" component={Welcome} />
+            <Route path="/crypto" component={CryptoInfo} />
+            <Route path="/forex" component={ForexInfo} />
+          </Switch>
+        </div>
+      </Router>
+        <h1>WELCOME TO TRADER TRACKS</h1>
       </div>
     );
   }
