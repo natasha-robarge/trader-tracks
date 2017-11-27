@@ -8,7 +8,7 @@ class CryptoInfo extends Component {
       getRequestData: '',
       isFetchingData: false
     }
-    
+    this.getCryptoInfo = this.getCryptoInfo.bind(this);
   }
 
   getCryptoInfo() {
@@ -18,9 +18,8 @@ class CryptoInfo extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
       .then(response => {
         console.log(response, 'res');
-        const foundData = response.data.data.children.map(obj => obj.data);
         this.setState({
-          getRequestData: foundData
+          name: response
         }) 
       }).catch(error => {
         console.log(`Error at ${error}`);
@@ -31,7 +30,7 @@ class CryptoInfo extends Component {
     
     return ( 
       <div className = "crypto">
-        Here is Crypto data: <li key={this.state.getRequestData.id}>{this.state.getRequestData.name}</li>
+        Here is Crypto data: {this.state.name}
       </div>
     );
   }
