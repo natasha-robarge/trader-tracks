@@ -8,7 +8,6 @@ import {
 import CryptoInfo from './components/CryptoInfo';
 import ForexInfo from './components/ForexInfo';
 import Welcome from './components/Welcome';
-import axios from 'axios';
 import './App.css';
 
 class App extends Component {git
