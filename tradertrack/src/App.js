@@ -31,6 +31,7 @@ class App extends Component {git
           </Switch>
         </div>
       </Router>
+     
       </div>
     );
   }

@@ -9,30 +9,33 @@ class CryptoInfo extends Component {
       getRequestData: '',
       isFetchingData: false
     }
-    this.getCryptoInfo = this.getCryptoInfo.bind(this);
+    this.searchCrypto = this.searchCrypto.bind(this);
   }
 
-  getCryptoInfo() {
+  searchCrypto(e) {
+    e.nativeEvent.stopImmediatePropagation();
+    let cryptoInfoArr = [];
+    let searchVal = document.querySelector('input').value;
     this.setState({
       isFetchingData: true
-    })
+    });
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
       .then(response => {
-        console.log(response, 'res');
-        let foundData = response.data
-        console.log(foundData, ' found')
+        let newData = response.data;
+        newData.forEach((obj, idx) => {
+          let slicedName = obj.name.slice(0, 3);
+          if (slicedName === searchVal) {
+            console.log(`found obj match, ${obj.symbol}`)
+            cryptoInfoArr.push(obj);
+          }
+        });
         this.setState({
-          getRequestData: foundData
-
+          getRequestData: cryptoInfoArr
         })
       }).catch(error => {
         console.log(`Error at ${error}`);
       })
   };
-
-  componentWillMount() {
-    this.getCryptoInfo()
-  }
 
   render() {
     let cryptoInfo = this.state.getRequestData;
@@ -47,11 +50,11 @@ class CryptoInfo extends Component {
     });
 
     return (
-      <div className="App">
+      <div className="crypto">
         <h1>Cryptocurrencies Info:</h1>
         <div className="search">
-          <input placeholder="Search for crypto name" />
-          <button>Submit</button>
+          <input className="searchbar" placeholder="Search for crypto name" onChange={(e) => this.searchCrypto(e)} />
+          <button>Search</button>
         </div>
         {dataList}
       </div>

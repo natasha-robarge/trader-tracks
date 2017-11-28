@@ -1,3 +1,17 @@
+body {
+  background: url(https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg) no-repeat center center fixed;
+  background-size: cover;
+  color: #ebffff;
+  text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+h1 {
+  padding: 30px;
+}
+
+p {
+  font-size: 20px;
+}
 .App {
   text-align: center;
 }
@@ -9,7 +23,7 @@ nav {
 }
 nav a {
   text-decoration: none;
-  padding-right: 20px;
+  padding-right: 30px;
   color: #ebffff;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   font-size: 20px;
@@ -17,9 +31,12 @@ nav a {
 nav a:hover {
   color: #a1f0f0;
 }
+.forex {
+  background-color: #000;
+}
 .forex-stats {
   text-align: center;
-  border: 2px solid #000;
+  border: 2px solid #a1f0f0;
 }
 .forex-stats p {
   display: inline-block;
@@ -30,7 +47,10 @@ nav a:hover {
 }
 .crypto-stats {
   text-align: center;
-  border: 2px solid #000;
+  border: 2px solid #a1f0f0;
+}
+.crypto {
+  background-color: #000;
 }
 .crypto-stats p {
   display: inline-block;
