@@ -6,29 +6,14 @@ class ForexInfo extends Component {
     super(props);
     this.state = {
       getRequestData: '',
-      isFetchingData: false
+      isFetchingData: false,
+      currConverted: ''
     }
     this.searchForex = this.searchForex.bind(this);
+    this.convertCurr = this.convertCurr.bind(this);
   }
 
-  // getForexInfo() {
-  //   this.setState({
-  //     isFetchingData: true
-  //   })
-  //   axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
-  //     .then(response => {
-  //       console.log(response);
-  //       let foundData = response.data;
-  //       this.setState({
-  //         getRequestData: foundData
-  //       })
-  //     }).catch(error => {
-  //       console.log(`Error at ${error}`);
-  //     })
-  // }
-
-
-  searchForex(e) {
+  searchForex(e, callback) {
     e.nativeEvent.stopImmediatePropagation();
     let forexInfoArr = [];
     let searchVal = document.querySelector('input').value;
@@ -41,15 +26,34 @@ class ForexInfo extends Component {
         newData.forEach((obj, idx) => {
           let slicedSymb = obj.symbol.slice(0, 3);
           if (slicedSymb === searchVal) {
-            console.log(`found obj match, ${obj.symbol}`)
             forexInfoArr.push(obj);
           }
         });
         this.setState({
           getRequestData: forexInfoArr
         })
+        if(callback) {
+          callback();
+        }
       }).catch(error => {
         console.log(`Error at ${error}`);
+      })
+  }
+
+  convertCurr() {
+    //We need search value to convert from
+    let searchVal = document.querySelector('.searchbar').value;
+    //We need currency value to convert to
+    let currencyVal = document.querySelector('.convertToCurr').value;
+    //Get conversions
+    axios.get('https://forex.1forge.com/1.0.2/convert?from='+ searchVal +'&to=' + currencyVal + '&quantity=1&api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
+      .then(res => {
+        console.log(res.data, ' retreived data');
+        this.setState({
+          currConverted: res.data.text
+        })
+      }).catch(err => {
+        console.log(`Error, ${err}`);
       })
   }
 
@@ -71,8 +75,11 @@ render() {
       <div className="forex-info">
       <div className="search">
         <input className="searchbar" placeholder="Search for FOREX pair" onChange={(e) => this.searchForex(e)} />
-        <button onClick={(e) => this.searchForex(e)}>Search</button>
+        <input className="convertToCurr" placeholder="Currency to convert" onChange={(e) => this.searchForex(e, this.convertCurr)} />
+        <button onClick={(e) => this.searchForex(e, this.convertCurr)}>Search</button>
       </div>
+        <h3>{this.state.currConverted}</h3>
+        <br />
         {dataList}
       </div>
     </div>
