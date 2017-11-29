@@ -9,7 +9,7 @@ body {
 }
 
 .Welcome header {
-  background: url(https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg) no-repeat center center fixed;
+  background: url("https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #ECEDF2;
   text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
