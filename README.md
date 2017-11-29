@@ -21,6 +21,7 @@ Navigate through the navbar by clicking either FOREX or Cryptocurrencies. Enter 
 
 # Future Features To Be Included
 
+* Add country flag of both pairings 
 * Add Stock market prices functionality
 * Login via Coinbase/Tradingview or Sign Up
 * Login via email and password

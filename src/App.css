@@ -51,7 +51,13 @@ body {
   text-align: center;
 }
 
+.container {
+  position: sticky;
+  width: 100%;
+}
+
 nav {
+  margin-top: 0;
   padding: 30px;
   background-color: #091D42;
   border: 2px ridge #000;
@@ -133,6 +139,7 @@ button {
   border: 1px ridge #396A92;
   background-color: #9AB4CB;
   font-size: 14px;
+  font-family: 'Lora', serif;
   width: 80px;
   box-shadow: 3px 3px 2px #000;
 }

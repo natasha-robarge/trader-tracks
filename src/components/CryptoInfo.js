@@ -74,10 +74,10 @@ class CryptoInfo extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/?convert=' + currencyVal)
       .then(res => {
         let run = res.data.forEach((obj, idx) => {
-          let newPrice = obj[`price_${currencyVal}`];
+          let notGiven = obj[`price_${currencyVal}`];
           let displayPrice = document.getElementById(idx);
           // console.log(displayPrice, obj);
-          displayPrice.innerHTML = newPrice;
+          displayPrice.innerHTML = notGiven;
         })
       }).catch(err => {
         console.log(`Received error, ${err}`);
@@ -98,7 +98,7 @@ class CryptoInfo extends Component {
       let dateNow = Date.now();
       let epochDate = currentDate - dateNow;
       let date = Math.floor(Math.abs((epochDate) / 1000));
-      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} / {data.symbol}</h3><br /><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><br /><h3>Price in {currencyVal}: </h3>  <h3 id={idx}> new price </h3><br /><br /><h3>last updated:</h3><p>{date} seconds ago</p><br /><br /><span>Percent change by the hour is {data.percent_change_1h}%</span></div></div>;
+      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} / {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>Price in {currencyVal || 'country'}: </h3>  <h3 id={idx}> not given </h3><br /><h3>last updated:</h3><p>{date} seconds ago</p><br /><span>Percent change by the hour is {data.percent_change_1h}%</span></div></div>;
     });
 
     return (
@@ -107,9 +107,9 @@ class CryptoInfo extends Component {
         <h1>Cryptocurrencies Info:</h1>
         
         <div className="search">
-          <input className="searchbar" placeholder="Search for crypto name" onChange={(e) => this.searchCrypto(e)} />
+          <input className="searchbar" placeholder="Filter crypto names" onChange={(e) => this.searchCrypto(e)} />
           <input className="convertToCurr" placeholder="Currency to convert" onChange={(e) => this.searchCrypto(e, this.convertCurr)} />
-          <button onClick={(e) => this.searchCrypto(e, this.convertCurr)}>Search</button>
+          <button onClick={(e) => this.searchCrypto(e, this.convertCurr)}>Filter</button>
         </div>
         {dataList}
       </div>
