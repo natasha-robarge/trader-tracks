@@ -1,16 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo|Lora|Ubuntu');
+
+html, body{
+  margin: 0;
+}
+
 body {
+  background-color: #396A92;
+}
+
+.Welcome header {
   background: url(https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg) no-repeat center center fixed;
   background-size: cover;
-  color: #ebffff;
+  color: #ECEDF2;
   text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+  position: absolute;
+  height: 90%;
 }
 
-h1 {
-  padding: 30px;
-}
-
-p {
+.Welcome p {
+  padding-left: 150px;
+  padding-right: 150px;
+  text-align: center;
   font-size: 20px;
+  font-family: 'Arimo', sans-serif;
+}
+
+.Welcome h1 {
+  margin-top: 100px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.Welcome .dashed-line {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 28%;
+  border: 2px dashed #ECEDF2;
+}
+
+.Welcome .dotted-line {
+  width: 35%;
+  border: 2px dotted #ECEDF2;
+}
+
+.Welcome h4 {
+  margin-top: 85px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .App {
@@ -19,7 +53,7 @@ p {
 
 nav {
   padding: 30px;
-  background-color: #335bca;
+  background-color: #091D42;
   border-radius: 10px;
   border: 2px ridge #000;
 }
@@ -27,49 +61,57 @@ nav {
 nav a {
   text-decoration: none;
   padding-right: 30px;
-  color: #ebffff;
+  color: #ECEDF2;
   text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
   font-size: 20px;
+  font-family: 'Lora', serif;
 }
 
 nav a:hover {
-  color: #a1f0f0;
+  color: #9AB4CB;
 }
 
-.forex {
-  background-color: #000;
+.forex h1 {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .forex-stats {
   text-align: center;
-  border: 2px solid #a1f0f0;
+  border: 2px solid #ECEDF2;
+  padding: 20px;
 }
 
 .forex-stats p {
   display: inline-block;
   padding-left: 5px;
+  font-family: 'Arimo', serif;
 }
 
 .forex-stats h3 {
   display: inline-block;
+  font-family: 'Arimo', sans-serif;
+  font-weight: 800;
+}
+
+.crypto h1 {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .crypto-stats {
   text-align: center;
-  border: 2px solid #a1f0f0;
-}
-
-.crypto {
-  background-color: #000;
+  border: 2px solid #ECEDF2;
+  padding: 20px;
 }
 
 .crypto-stats p {
   display: inline-block;
+  font-family: 'Arimo', sans-serif;
   padding-left: 5px;
 }
 
 .crypto-stats h3 {
   display: inline-block;
+  font-family: 'Arimo', sans-serif;
 }
 
 .search {
@@ -80,4 +122,18 @@ nav a:hover {
   width: 200px;
   border-radius: 10px;
   margin-right: 20px;
+}
+
+button {
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px ridge #396A92;
+  background-color: #9AB4CB;
+  font-size: 14px;
+  width: 80px;
+  box-shadow: 3px 3px 2px #000;
+}
+
+button:hover {
+  cursor: pointer;
 }

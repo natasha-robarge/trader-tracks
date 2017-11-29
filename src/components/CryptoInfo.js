@@ -49,10 +49,10 @@ class CryptoInfo extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/?convert=' + currencyVal)
       .then(res => {
         let run = res.data.forEach((obj, idx) => {
-          let newPrice = obj[`price_${currencyVal}`]
-          let displayPrice = document.getElementById(idx)
+          let newPrice = obj[`price_${currencyVal}`];
+          let displayPrice = document.getElementById(idx);
           // console.log(displayPrice, obj);
-          displayPrice.innerHTML = newPrice
+          displayPrice.innerHTML = newPrice;
         })
       }).catch(err => {
         console.log(`Received error, ${err}`);
@@ -68,8 +68,8 @@ class CryptoInfo extends Component {
 
     var dataList = cryptoInfoArr.map((data, idx) => {
       let currencyVal = document.querySelector('.convertToCurr').value.toUpperCase();
-      let date = Math.round(data.last_updated / (1000 * 60 * 60) % 24)
-      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>Price in {currencyVal}: </h3>  <h3 id={idx}> new price </h3><br /><h3>last updated:</h3><p>{date} hours ago</p><br /><p>Percent change by the hour is {data.percent_change_1h}%</p></div></div>;
+      let date = Math.round(data.last_updated / (1000 * 60 * 60) % 24);
+      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name}  {data.symbol}</h3><br /><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><br /><h3>Price in {currencyVal}: </h3>  <h3 id={idx}> new price </h3><br /><br /><h3>last updated:</h3><p>{date} hours ago</p><br /><br /><p>Percent change by the hour is {data.percent_change_1h}%</p></div></div>;
     });
 
     return (

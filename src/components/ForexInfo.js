@@ -71,7 +71,8 @@ render() {
 
   var dataList = forexInfoArray.map((data, idx) => {
     let date = Math.round(data.timestamp / (1000 * 60 * 60) % 24)
-    return <div className={idx} key={idx}><div className="forex-stats"><h3>{data.symbol}</h3><br /><h3>Price: </h3><p>{data.price}</p><br /><h3>Current Bid: </h3><p>{data.bid}</p><br /><h3>last updated: </h3><p>{date} hours ago</p></div></div>;
+    let symb = data.symbol.slice(0, 3) + " / " + data.symbol.slice(3, 6);
+    return <div className={idx} key={idx}><div className="forex-stats"><h3>{symb}</h3><br /><br /><h3>Price: </h3><p>{data.price}</p><br /><br /><h3>Current Bid: </h3><p>{data.bid}</p><br /><br /><h3>last updated: </h3><p>{date} hours ago</p></div></div>;
   });
   return (
     <div className="forex">
