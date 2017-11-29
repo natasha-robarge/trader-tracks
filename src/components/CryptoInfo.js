@@ -10,7 +10,28 @@ class CryptoInfo extends Component {
     }
     this.searchCrypto = this.searchCrypto.bind(this);
     this.convertCurr = this.convertCurr.bind(this);
+    this.displayCrypto = this.displayCrypto.bind(this);
   }
+
+  displayCrypto() {
+    let cryptoInfoArr = [];
+
+    this.setState({
+      isFetchingData: true
+    });
+    axios.get('https://api.coinmarketcap.com/v1/ticker/')
+      .then(response => {
+        let newData = response.data;
+        newData.forEach((obj, idx) => {
+            cryptoInfoArr.push(obj);
+        });
+        this.setState({
+          getRequestData: cryptoInfoArr
+        })
+      }).catch(error => {
+        console.log(`Error at ${error}`);
+      })
+  };
 
   searchCrypto(e, callback) {
     e.nativeEvent.stopImmediatePropagation();
@@ -40,6 +61,10 @@ class CryptoInfo extends Component {
       })
   };
 
+  componentWillMount() {
+    this.displayCrypto();
+  }
+
   convertCurr() {
     //get search value
     let searchVal = document.querySelector('.searchbar').value;
@@ -67,7 +92,6 @@ class CryptoInfo extends Component {
     }
 
     var dataList = cryptoInfoArr.map((data, idx) => {
-      console.log(data, ' dataatatata')
       let currencyVal = document.querySelector('.convertToCurr').value.toUpperCase();
 
       let currentDate = new Date(data.last_updated * 1000);

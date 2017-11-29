@@ -11,6 +11,29 @@ class ForexInfo extends Component {
     }
     this.searchForex = this.searchForex.bind(this);
     this.convertCurr = this.convertCurr.bind(this);
+    this.displayForex = this.displayForex.bind(this);
+  }
+
+  displayForex() {
+    let forexInfoArr = [];
+
+    this.setState({
+      isFetchingData: true
+    });
+
+    axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
+      .then(response => {
+        let newData = response.data;
+        newData.forEach((obj, idx) => {
+            forexInfoArr.push(obj);
+        });
+
+        this.setState({
+          getRequestData: forexInfoArr
+        });
+      }).catch(error => {
+        console.log(`Error at ${error}`);
+      })
   }
 
   searchForex(e, callback) {
@@ -43,6 +66,10 @@ class ForexInfo extends Component {
       }).catch(error => {
         console.log(`Error at ${error}`);
       })
+  }
+
+  componentWillMount() {
+    this.displayForex();
   }
 
   convertCurr() {
