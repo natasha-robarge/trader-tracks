@@ -13,7 +13,7 @@ class CryptoInfo extends Component {
     this.displayCrypto = this.displayCrypto.bind(this);
   }
 
-  displayCrypto() {
+  displayCrypto(callback) {
     let cryptoInfoArr = [];
 
     this.setState({
@@ -28,6 +28,9 @@ class CryptoInfo extends Component {
         this.setState({
           getRequestData: cryptoInfoArr
         })
+        if(callback) {
+          callback();
+        }
       }).catch(error => {
         console.log(`Error at ${error}`);
       })
@@ -62,7 +65,7 @@ class CryptoInfo extends Component {
   };
 
   componentWillMount() {
-    this.displayCrypto();
+    this.displayCrypto(this.convertCurr);
   }
 
   convertCurr() {
@@ -77,7 +80,7 @@ class CryptoInfo extends Component {
           let notGiven = obj[`price_${currencyVal}`];
           let displayPrice = document.getElementById(idx);
           // console.log(displayPrice, obj);
-          displayPrice.innerHTML = notGiven;
+          displayPrice.innerHTML = notGiven || 'not given';
         })
       }).catch(err => {
         console.log(`Received error, ${err}`);

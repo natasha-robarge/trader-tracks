@@ -14,7 +14,7 @@ class ForexInfo extends Component {
     this.displayForex = this.displayForex.bind(this);
   }
 
-  displayForex() {
+  displayForex(callback) {
     let forexInfoArr = [];
 
     this.setState({
@@ -31,6 +31,10 @@ class ForexInfo extends Component {
         this.setState({
           getRequestData: forexInfoArr
         });
+        
+        if(callback) {
+          callback();
+        }
       }).catch(error => {
         console.log(`Error at ${error}`);
       })
@@ -69,7 +73,7 @@ class ForexInfo extends Component {
   }
 
   componentWillMount() {
-    this.displayForex();
+    this.displayForex(this.convertCurr);
   }
 
   convertCurr() {
