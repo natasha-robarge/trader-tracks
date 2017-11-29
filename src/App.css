@@ -215,7 +215,6 @@ button:hover {
     font-size: 10px;
     width: 45px;
   }
-
 }
 
 @media (max-width: 640px) {
@@ -268,6 +267,121 @@ button:hover {
     font-size: 10px;
     width: 45px;
   }
+}
 
+@media (max-width: 740px) {
+  nav a {
+    font-size: 11px;
+  }
+
+  .Welcome h1 {
+    margin-top: 70px;
+    margin-bottom: 20px;
+    font-size: 25px;
+  }
+
+  .Welcome .dashed-line {
+    width: 45%;
+  }
+
+  .Welcome .dotted-line {
+    width: 60%;
+  }
+
+  .Welcome h4 {
+    margin-top: 70px;
+    font-size: 16px;
+  }
+
+  .crypto h1 {
+    font-size: 26px;
+  }
+
+  .crypto h3 {
+    font-size: 22px;
+  }
+
+  .crypto span {
+    font-size: 20px;
+  }
+
+  .forex h1 {
+    font-size: 30px;
+  }
+
+  .forex h3 {
+    font-size: 22px;
+  }
+
+  .search input {
+    width: 140px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 1026px) {
+  .Welcome h1 {
+    margin-top: 90px;
+    margin-bottom: 40px;
+    font-size: 40px;
+  }
+
+  .Welcome .dashed-line {
+    width: 55%;
+  }
+
+  .Welcome .dotted-line {
+    width: 65%;
+  }
+
+  .Welcome h4 {
+    margin-top: 70px;
+    font-size: 24px;
+  }
+
+  .Welcome p {
+    font-size: 22px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 60px;
+  }
+
+
+  .crypto h1 {
+    font-size: 40px;
+  }
+
+  .crypto h3 {
+    font-size: 32px;
+  }
+
+  .crypto span {
+    font-size: 28px;
+  }
+
+  .forex h1 {
+    font-size: 42px;
+  }
+
+  .forex h3 {
+    font-size: 32px;
+  }
+
+  .forex-stats p {
+    font-size: 26px;
+  }
+
+  .search input {
+    width: 220px;
+    margin-right: 10px;
+    height: 25px;
+    margin-right: 20px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 12px;
+    width: 60px;
+  }
 
 }
