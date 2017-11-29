@@ -9,12 +9,14 @@ body {
 }
 
 .Welcome header {
-  background: url("https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg") no-repeat center center fixed;
+  background: url(http://forextradingbig.com/wp-content/uploads/2012/10/untitled30.bmp) no-repeat center center;
   background-size: cover;
   color: #ECEDF2;
   text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
   position: absolute;
-  height: 90%;
+  min-height: 90%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .Welcome p {
@@ -52,8 +54,8 @@ body {
 }
 
 .container {
-  position: relative;
-  width: 100%;
+  /* position: relative;
+  width: 100%; */
 }
 
 nav {
@@ -61,8 +63,8 @@ nav {
   padding: 30px;
   background-color: #091D42;
   border: 2px ridge #000;
-  position: fixed;
-  width: 99.9%;
+  /* position: fixed;
+  width: 99.9%; */
 }
 
 nav a {
@@ -158,10 +160,6 @@ button:hover {
   }
 
   .Welcome header {
-    background: url(https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg) no-repeat center center fixed;
-    background-size: cover;
-    color: #ECEDF2;
-    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
     position: absolute;
     height: 90%;
   }
