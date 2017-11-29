@@ -67,9 +67,14 @@ class CryptoInfo extends Component {
     }
 
     var dataList = cryptoInfoArr.map((data, idx) => {
+      console.log(data, ' dataatatata')
       let currencyVal = document.querySelector('.convertToCurr').value.toUpperCase();
-      let date = Math.round(data.last_updated / (1000 * 60 * 60) % 24);
-      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} / {data.symbol}</h3><br /><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><br /><h3>Price in {currencyVal}: </h3>  <h3 id={idx}> new price </h3><br /><br /><h3>last updated:</h3><p>{date} hours ago</p><br /><br /><span>Percent change by the hour is {data.percent_change_1h}%</span></div></div>;
+
+      let currentDate = new Date(data.last_updated * 1000);
+      let dateNow = Date.now();
+      let epochDate = currentDate - dateNow;
+      let date = Math.floor(Math.abs((epochDate) / 1000));
+      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} / {data.symbol}</h3><br /><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><br /><h3>Price in {currencyVal}: </h3>  <h3 id={idx}> new price </h3><br /><br /><h3>last updated:</h3><p>{date} seconds ago</p><br /><br /><span>Percent change by the hour is {data.percent_change_1h}%</span></div></div>;
     });
 
     return (
