@@ -2,6 +2,8 @@
 
 #### Your one stop shop to track the latest prices in FOREX and Cryptocurrencies
 
+##### Check it out, [here](https://tradertracks.herokuapp.com/)
+
 Trader Tracks is a React application that tells you prices of FOREX pairs as well as cryptocurrency prices since it's last update. It can convert the price to a currency of your choice. For cryptocurrencies, the price is automatically set to USD and the price of FOREX pairs are automatically set to the currency of the first pair. For example, EUR/USD would be automatically set to a price in euros unless specified otherwise. I hope to completely convert this into a React Native application for IOS over time.
 
 # Getting Started
