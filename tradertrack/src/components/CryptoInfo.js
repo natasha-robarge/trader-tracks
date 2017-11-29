@@ -7,12 +7,14 @@ class CryptoInfo extends Component {
     super(props);
     this.state = {
       getRequestData: '',
-      isFetchingData: false
+      isFetchingData: false,
+      convertedCurr: []
     }
     this.searchCrypto = this.searchCrypto.bind(this);
+    this.convertCurr = this.convertCurr.bind(this);
   }
 
-  searchCrypto(e) {
+  searchCrypto(e, callback) {
     e.nativeEvent.stopImmediatePropagation();
     let cryptoInfoArr = [];
     let searchVal = document.querySelector('input').value;
@@ -23,19 +25,44 @@ class CryptoInfo extends Component {
       .then(response => {
         let newData = response.data;
         newData.forEach((obj, idx) => {
-          let slicedName = obj.name.slice(0, 3);
+          let slicedName = obj.id.slice(0, 3);
           if (slicedName === searchVal) {
-            console.log(`found obj match, ${obj.symbol}`)
+            // console.log(`found obj match, ${obj.symbol}`)
             cryptoInfoArr.push(obj);
           }
         });
         this.setState({
           getRequestData: cryptoInfoArr
         })
+        if(callback) {
+          callback();
+        }
       }).catch(error => {
         console.log(`Error at ${error}`);
       })
   };
+
+  convertCurr() {
+    //get search value
+    let searchVal = document.querySelector('.searchbar').value;
+    //get currency to convert to value
+    let currencyVal = document.querySelector('.convertToCurr').value.toLowerCase();
+    //send request
+    axios.get('https://api.coinmarketcap.com/v1/ticker/?convert=' + currencyVal)
+      .then(res => {
+        let run = res.data.forEach((obj, idx) => {
+          //for each property in object
+          //I need to take the obj at the index and check.
+          let newPrice = obj[`price_${currencyVal}`]
+          let displayPrice = document.getElementById(idx)
+          // console.log(displayPrice, obj);
+          displayPrice.innerHTML = newPrice
+        })
+      }).catch(err => {
+        console.log(`Received error, ${err}`);
+      })
+    //display the data by changing the state of converted currency
+  }
 
   render() {
     let cryptoInfo = this.state.getRequestData;
@@ -45,8 +72,9 @@ class CryptoInfo extends Component {
     }
 
     var dataList = cryptoInfoArr.map((data, idx) => {
+      let currencyVal = document.querySelector('.convertToCurr').value.toUpperCase();
       let date = Math.round(data.last_updated / (1000 * 60 * 60) % 24)
-      return <div className={idx} key={idx}><div className="crypto-stats"><h3>{data.name} {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>last updated:</h3><p>{date} hours ago</p><br /><p>Percent change by the hour is {data.percent_change_1h}%</p></div></div>;
+      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>Price in {currencyVal}: </h3>  <h3 id={idx}> new price </h3><br /><h3>last updated:</h3><p>{date} hours ago</p><br /><p>Percent change by the hour is {data.percent_change_1h}%</p></div></div>;
     });
 
     return (
@@ -54,7 +82,9 @@ class CryptoInfo extends Component {
         <h1>Cryptocurrencies Info:</h1>
         <div className="search">
           <input className="searchbar" placeholder="Search for crypto name" onChange={(e) => this.searchCrypto(e)} />
-          <button>Search</button>
+          <input className="convertToCurr" placeholder="Currency to convert" onChange={(e) => this.searchCrypto(e, this.convertCurr)} />
+          {/* onChange={(e) => this.searchForex(e, this.convertCurr)} */}
+          <button onClick={(e) => this.searchCrypto(e, this.convertCurr)}>Search</button>
         </div>
         {dataList}
       </div>
