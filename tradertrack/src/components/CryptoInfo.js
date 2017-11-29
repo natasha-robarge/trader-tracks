@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 class CryptoInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
       getRequestData: '',
-      isFetchingData: false,
-      convertedCurr: []
+      isFetchingData: false
     }
     this.searchCrypto = this.searchCrypto.bind(this);
     this.convertCurr = this.convertCurr.bind(this);
@@ -51,8 +49,6 @@ class CryptoInfo extends Component {
     axios.get('https://api.coinmarketcap.com/v1/ticker/?convert=' + currencyVal)
       .then(res => {
         let run = res.data.forEach((obj, idx) => {
-          //for each property in object
-          //I need to take the obj at the index and check.
           let newPrice = obj[`price_${currencyVal}`]
           let displayPrice = document.getElementById(idx)
           // console.log(displayPrice, obj);
@@ -61,7 +57,6 @@ class CryptoInfo extends Component {
       }).catch(err => {
         console.log(`Received error, ${err}`);
       })
-    //display the data by changing the state of converted currency
   }
 
   render() {
@@ -79,11 +74,12 @@ class CryptoInfo extends Component {
 
     return (
       <div className="crypto">
+
         <h1>Cryptocurrencies Info:</h1>
+        
         <div className="search">
           <input className="searchbar" placeholder="Search for crypto name" onChange={(e) => this.searchCrypto(e)} />
           <input className="convertToCurr" placeholder="Currency to convert" onChange={(e) => this.searchCrypto(e, this.convertCurr)} />
-          {/* onChange={(e) => this.searchForex(e, this.convertCurr)} */}
           <button onClick={(e) => this.searchCrypto(e, this.convertCurr)}>Search</button>
         </div>
         {dataList}

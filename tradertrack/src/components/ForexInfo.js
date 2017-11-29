@@ -15,23 +15,28 @@ class ForexInfo extends Component {
 
   searchForex(e, callback) {
     e.nativeEvent.stopImmediatePropagation();
+
     let forexInfoArr = [];
     let searchVal = document.querySelector('input').value;
+
     this.setState({
       isFetchingData: true
     });
+
     axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
       .then(response => {
         let newData = response.data;
         newData.forEach((obj, idx) => {
-          let slicedSymb = obj.symbol.slice(0, 3);
+        let slicedSymb = obj.symbol.slice(0, 3);
           if (slicedSymb === searchVal) {
             forexInfoArr.push(obj);
           }
         });
+
         this.setState({
           getRequestData: forexInfoArr
-        })
+        });
+
         if(callback) {
           callback();
         }
@@ -41,14 +46,14 @@ class ForexInfo extends Component {
   }
 
   convertCurr() {
-    //We need search value to convert from
+    //Input: search value to convert from
     let searchVal = document.querySelector('.searchbar').value;
-    //We need currency value to convert to
+    //Output: currency value to convert to
     let currencyVal = document.querySelector('.convertToCurr').value;
-    //Get conversions
+    
     axios.get('https://forex.1forge.com/1.0.2/convert?from='+ searchVal +'&to=' + currencyVal + '&quantity=1&api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
       .then(res => {
-        console.log(res.data, ' retreived data');
+        console.log(`retreived data, ${res.data}`);
         this.setState({
           currConverted: res.data.text
         })
@@ -70,6 +75,7 @@ render() {
   });
   return (
     <div className="forex">
+    
       <h1>Forex Info</h1>
 
       <div className="forex-info">
@@ -79,7 +85,7 @@ render() {
         <button onClick={(e) => this.searchForex(e, this.convertCurr)}>Search</button>
       </div>
         <h3>{this.state.currConverted}</h3>
-        <br />
+          <br />
         {dataList}
       </div>
     </div>
