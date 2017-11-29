@@ -137,3 +137,47 @@ button {
 button:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 550px) {
+  .Welcome header {
+    background: url(https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg) no-repeat center center fixed;
+    background-size: cover;
+    color: #ECEDF2;
+    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+    position: absolute;
+    height: 90%;
+  }
+
+  .Welcome h1 {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .Welcome h4 {
+    margin-top: 40px;
+    font-size: 14px;
+    padding: 0px 10px;
+  }
+
+  .Welcome .dashed-line {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 35%;
+  }
+
+  .Welcome .dotted-line {
+    width: 50%;
+  }
+
+  .Welcome p {
+    font-size: 12px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+  }
+
+  nav a {
+    font-size: 7px;
+  }
+}
