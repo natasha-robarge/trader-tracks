@@ -101,7 +101,7 @@ class CryptoInfo extends Component {
       let dateNow = Date.now();
       let epochDate = currentDate - dateNow;
       let date = Math.floor(Math.abs((epochDate) / 1000));
-      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} / {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>Price in {currencyVal || 'country'}: </h3>  <h3 id={idx}> not given </h3><br /><h3>last updated:</h3><p>{date} seconds ago</p><br /><span>Percent change by the hour is {data.percent_change_1h}%</span></div></div>;
+      return <div className="crypto-display" key={idx}><div className="crypto-stats"><h3>{data.name} / {data.symbol}</h3><br /><h3>Price in USD:</h3><p>{data.price_usd}</p><br /><h3>Price in {currencyVal || 'currency'}: </h3>  <h3 id={idx}> not given </h3><br /><h3>last updated:</h3><p>{date} seconds ago</p><br /><span>Percent change by the hour is {data.percent_change_1h}%</span></div></div>;
     });
 
     return (
