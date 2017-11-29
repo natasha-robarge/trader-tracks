@@ -109,6 +109,10 @@ nav a:hover {
   padding-left: 5px;
 }
 
+.crypto span {
+  font-family: 'Arimo', sans-serif;
+}
+
 .crypto-stats h3 {
   display: inline-block;
   font-family: 'Arimo', sans-serif;
@@ -138,7 +142,11 @@ button:hover {
   cursor: pointer;
 }
 
-@media screen and (max-width: 550px) {
+@media (max-width: 570px) {
+  nav a {
+    font-size: 7px;
+  }
+
   .Welcome header {
     background: url(https://i.ytimg.com/vi/QQHDKF1rJYM/maxresdefault.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -176,8 +184,90 @@ button:hover {
     padding-right: 30px;
     text-align: center;
   }
-
-  nav a {
-    font-size: 7px;
+  
+  .crypto h1 {
+    font-size: 20px;
   }
+
+  .crypto h3 {
+    font-size: 15px;
+  }
+
+  .crypto span {
+    font-size: 14px;
+  }
+
+  .forex h1 {
+    font-size: 25px;
+  }
+
+  .forex h3 {
+    font-size: 20px;
+  }
+  
+  .search input {
+    width: 100px;
+    margin-right: 10px;
+  }
+
+  button {
+    padding: 5px;
+    font-size: 10px;
+    width: 45px;
+  }
+
+}
+
+@media (max-width: 640px) {
+  nav a {
+    font-size: 9px;
+  }
+
+  .Welcome h1 {
+    margin-top: 60px;
+  }
+
+  .Welcome p {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .Welcome h4 {
+    margin-top: 60px;
+    font-size: 14px;
+    padding: 0px 10px;
+  }
+
+  .crypto h1 {
+    font-size: 22px;
+  }
+
+  .crypto h3 {
+    font-size: 18px;
+  }
+
+  .crypto span {
+    font-size: 16px;
+  }
+
+  .forex h1 {
+    font-size: 26px;
+  }
+
+  .forex h3 {
+    font-size: 18px;
+  }
+
+  .search input {
+    width: 125px;
+    margin-right: 10px;
+  }
+
+  button {
+    padding: 5px;
+    font-size: 10px;
+    width: 45px;
+  }
+
+
 }
