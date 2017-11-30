@@ -106,15 +106,14 @@ class CryptoInfo extends Component {
 
     return (
       <div className="crypto">
-
-        <h1>Cryptocurrencies Info:</h1>
-        
+          <h1>Cryptocurrencies Info:</h1>
         <div className="search">
           <input className="searchbar" placeholder="Filter crypto names" onChange={(e) => this.searchCrypto(e)} />
           <input className="convertToCurr" placeholder="Currency to convert" onChange={(e) => this.searchCrypto(e, this.convertCurr)} />
           <button onClick={(e) => this.searchCrypto(e, this.convertCurr)}>Filter</button>
         </div>
         {dataList}
+          <a href="crypto"><img className="arrow-up" src="https://image.flaticon.com/icons/svg/25/25649.svg" alt="arrow up" /></a>
       </div>
     );
   }

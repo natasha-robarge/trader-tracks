@@ -53,18 +53,11 @@ body {
   text-align: center;
 }
 
-.container {
-  /* position: relative;
-  width: 100%; */
-}
-
 nav {
   top: 0;
   padding: 30px;
   background-color: #091D42;
   border: 2px ridge #000;
-  /* position: fixed;
-  width: 99.9%; */
 }
 
 nav a {
@@ -87,7 +80,7 @@ nav a:hover {
 
 .forex-stats {
   text-align: center;
-  border: 2px solid #ECEDF2;
+  border: 2px solid #091D42;
   padding: 20px;
 }
 
@@ -110,7 +103,7 @@ nav a:hover {
 
 .crypto-stats {
   text-align: center;
-  border: 2px solid #ECEDF2;
+  border: 2px solid #091D42;
   padding: 20px;
 }
 
@@ -148,11 +141,20 @@ button {
   font-family: 'Lora', serif;
   width: 80px;
   box-shadow: 3px 3px 2px #000;
-}
-
-button:hover {
   cursor: pointer;
 }
+
+.arrow-up {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  cursor: pointer;
+  padding: 15px;
+}
+
 
 @media (max-width: 570px) {
   nav a {

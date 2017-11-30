@@ -123,6 +123,7 @@ render() {
           <br />
         {dataList}
       </div>
+        <a href="forex"><img className="arrow-up" src="https://image.flaticon.com/icons/svg/25/25649.svg" alt="arrow up" /></a>
     </div>
   );
 }
