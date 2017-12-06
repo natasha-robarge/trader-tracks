@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import REACT_APP_API_KEY from './.env.js';
 
 class ForexInfo extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class ForexInfo extends Component {
       isFetchingData: true
     });
 
-    axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
+    axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=' + REACT_APP_API_KEY)
       .then(response => {
         let newData = response.data;
         newData.forEach((obj, idx) => {
@@ -50,7 +51,7 @@ class ForexInfo extends Component {
       isFetchingData: true
     });
 
-    axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
+    axios.get('https://forex.1forge.com/1.0.2/quotes?api_key=' + REACT_APP_API_KEY)
       .then(response => {
         let newData = response.data;
         newData.forEach((obj, idx) => {
@@ -82,7 +83,7 @@ class ForexInfo extends Component {
     //Output: currency value to convert to
     let currencyVal = document.querySelector('.convertToCurr').value;
     
-    axios.get('https://forex.1forge.com/1.0.2/convert?from='+ searchVal +'&to=' + currencyVal + '&quantity=1&api_key=9VnhYgLVa0eJ6ErrNciJAeSZDq360s0z')
+    axios.get('https://forex.1forge.com/1.0.2/convert?from=' + searchVal + '&to=' + currencyVal + '&quantity=1&api_key=' + REACT_APP_API_KEY)
       .then(res => {
         console.log(`retreived data, ${res.data}`);
         this.setState({

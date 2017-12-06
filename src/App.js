@@ -10,6 +10,8 @@ import ForexInfo from './components/ForexInfo';
 import Welcome from './components/Welcome';
 import './App.css';
 
+require('dotenv').config();
+
 class App extends Component {git
 
   render() {
